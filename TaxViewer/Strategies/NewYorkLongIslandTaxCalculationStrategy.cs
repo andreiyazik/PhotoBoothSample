@@ -2,11 +2,11 @@
 
 namespace TaxViewer.Strategies;
 
-public class NewYorkLongIslandTaxStrategy : ITaxStrategy
+public class NewYorkLongIslandTaxCalculationStrategy : ITaxCalculationStrategy
 {
     private const decimal TAX_PERCENTAGE = 8.625M;
 
-    public decimal CalculateTax(IReadOnlyCollection<OrderItem> orderItems)
+    public decimal Calculate(IReadOnlyCollection<OrderItem> orderItems)
     {
         decimal total = 0;
 
@@ -17,5 +17,10 @@ public class NewYorkLongIslandTaxStrategy : ITaxStrategy
         }
 
         return total == 0 ? 0 : total / 100 * TAX_PERCENTAGE;
+    }
+
+    public override string ToString()
+    {
+        return "Long Island, New York";
     }
 }
